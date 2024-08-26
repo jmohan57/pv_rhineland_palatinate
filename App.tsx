@@ -5,114 +5,103 @@
  * @format
  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {Linking, Alert} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import {InAppBrowser} from 'react-native-inappbrowser-reborn';
+// import {LogLevel, OneSignal} from 'react-native-onesignal';
+import OneSignal from 'react-native-onesignal';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const sleep = async (timeout: any) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+  const openLink = async () => {
+    try {
+      const url = 'https://pflegekammer-rlp.de/';
+      if (await InAppBrowser.isAvailable()) {
+        const result = await InAppBrowser.open(url, {
+          // iOS Properties
+          dismissButtonStyle: 'cancel',
+          preferredBarTintColor: '#453AA4',
+          preferredControlTintColor: 'white',
+          readerMode: false,
+          animated: true,
+          modalPresentationStyle: 'fullScreen',
+          modalTransitionStyle: 'coverVertical',
+          modalEnabled: true,
+          enableBarCollapsing: false,
+          // Android Properties
+          showTitle: false,
+          toolbarColor: '#0d9ddb',
+          secondaryToolbarColor: 'black',
+          navigationBarColor: 'black',
+          navigationBarDividerColor: 'white',
+          enableUrlBarHiding: false,
+          enableDefaultShare: true,
+          forceCloseOnRedirection: false,
+          // Specify full animation resource identifier(package:anim/name)
+          // or only resource name(in case of animation bundled with app).
+          animations: {
+            startEnter: 'slide_in_right',
+            startExit: 'slide_out_left',
+            endEnter: 'slide_in_left',
+            endExit: 'slide_out_right',
+          },
+          headers: {
+            'my-custom-header': 'my custom header value',
+          },
+        });
+        await sleep(800);
+        Alert.alert(JSON.stringify(result));
+      } else Linking.openURL(url);
+    } catch (error: any) {
+      Alert.alert(error.message);
+    }
+  };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  // // Remove this method to stop OneSignal Debugging
+  // OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+
+  // // OneSignal Initialization
+  // OneSignal.initialize('23d045d4-d28f-492c-b616-d73148582ad7');
+
+  // // requestPermission will show the native iOS or Android notification permission prompt.
+  // // We recommend removing the following code and instead using an In-App Message to prompt for notification permission
+  // OneSignal.Notifications.requestPermission(true);
+
+  // // Method for listening for notification clicks
+  // OneSignal.Notifications.addEventListener('click', event => {
+  //   console.log('OneSignal: notification clicked:', event);
+  // });
+
+  useEffect(() => {
+    // This runs only once, after the component mounts
+    openLink();
+
+    // Initialize OneSignal with your App ID
+    OneSignal.setAppId('23d045d4-d28f-492c-b616-d73148582ad7');
+
+    // Prompt for push permissions (iOS)
+    OneSignal.promptForPushNotificationsWithUserResponse();
+
+    // Handle notification opened
+    OneSignal.setNotificationOpenedHandler(notification => {
+      console.log('Notification opened:', notification);
+    });
+
+    // Handle notification received while the app is running
+    OneSignal.setNotificationWillShowInForegroundHandler(
+      notificationReceivedEvent => {
+        let notification = notificationReceivedEvent.getNotification();
+        console.log('Notification received in foreground:', notification);
+        notificationReceivedEvent.complete(notification);
+      },
+    );
+  }, []); // The empty array makes sure this effect runs only once (on mount)
+
+  return <></>;
+}
 
 export default App;
