@@ -1,13 +1,29 @@
 {
-  "type": "service_account",
-  "project_id": "rhineland-palatinate",
-  "private_key_id": "040242c060195d2ad5a2ec455172a508f8009c4b",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDOTgrckWpAPjDH\nYVGP1taB5K/y0jxkuzwEbV51MKE93BUwYr2XMiB3mPjpp7vRpXvUzGNsgtjJsHhq\nKaZKpTV5SwfP9n+QqysX+B9iprH9ddsFsfBFKFZDEwFpvBxXBl2x0Cj8ALNkIXop\nPcbXZ2FLqptlvhwCBl3/z6eRDoxaLGu0yTqezygfWrOq+zG53QZYnkNckGeIeAOm\n1N4cJQzGDhT57NYkwyo3vVSBiZYkmSVDkPhJa3Vo87zenAWYDjsyQyFAhqUjFdm9\nFf1DkF1NuRACsIB7IB+pm9ClCkPQzcvRyM807o5NviMKfgT9zv4JrLaMNZSraGV+\nnaCDcqY1AgMBAAECggEAIc7MvV4QGySF4lqKnud+Qg2Lnt+AeaJsQK56lPpJ5iT/\njO0VdCZJB0hYfBPadc3oV9RBs8nShGTIqt8V6vQdafnXdydGOtsuBfDJleVK1EYg\nxRNmlDK6xiWibOUggMtghc/es4Na4n0Q85q1z91XZqq36gmoNdW8yDvLkjwf2HPU\n5rh6tGY4SfwI5chdFm1mqONiMp7hhUI+9DF5GuP8Wztzb1SjCcM6qpbW1n7xNSu4\nqGA1lyCu59/yCNM3znQLro7p8DCTRnslm/rz0Lw/ps+B2JAJw7hqhuxUCbqm0NKn\nXBc0eqSmGXxDxQZC1o8QYqTMnqc6WXMu6RDIVrCpGQKBgQD9vVQBrYLrZRTbSRVV\nKQxSumndN4jqUEKgXi78O9qeYTib+GdlAYTmVGkjZ/0gSYkC4sap350MpmVm2iNM\njzTPueaBK9t9j4NkFv2wEYK+VCpkKkcLVly4+//3WdrGCFGE38Ri7Tgj9ra51N1y\n1iEmvmyIB1Q5DiPDTY06zhmEmQKBgQDQJIkxgie1f0yTcfOeUjhrPjCC9o1DYGQO\nEza+Hk/G1CfgyL2WH2e0+sEV4FP38pp7AzFXVouyDOmAZgp/tAk0AvtUfHcPc8/D\n7nAStS7n2R4lgApLM+g9oReOX6aXGrFkkAXsSu1uPXGJp/6xfht0jrXHl+lcaJsr\nhVDv+UVT/QKBgQCOCYOTBNv6hTTto7WLXFUHok5MhR/helgxiUdn7uFsMyQLOzw1\nsGoCvVG1fiqV/lPyB5wJz6EMScENmCKWYru/ZGMB/9j4KnP0fWI5QzQa8uZf98KZ\nOBjjfD1G60ep/1ISvWgjsILyrtKOp/fmprMcCxCZ/PBKl/2xACKEvoZOUQKBgQC4\nlV4RSLJ8U1sOewSoB5Q/DtSon4thD+9LSCDI80qeMfD3eC4hHtKyfZmUE++DOGNk\n6czs/jQ+fxLoKhXvcDKlLGvEXeicDIFY6W/8Ny9Urof8i5MVY//1/5FLUmoDIMnm\nO471IPF0TQsOH6xPrV0dvZ1ZVs+9gorxSnYfini/5QKBgQDd6gNdi4YY1u5LGFUM\nn11OjBcqrfLOcnje0IY30Mi3N8BRHRYsx2SPS7B37X6rmcFbjV2hlR59Zt49NACn\n2EwaT9OxnFdNHDtDZO2znUJ/3ZMIOrU4FuLnpb1N0jRk3AVuQwd20nqjrO/6YFww\nr1o+7FlzFKLQQ6iQOPNl+BtvmA==\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-jscn1@rhineland-palatinate.iam.gserviceaccount.com",
-  "client_id": "112426871282835541772",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jscn1%40rhineland-palatinate.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
+  "project_info": {
+    "project_number": "1056157639585",
+    "project_id": "my-inappbrowser",
+    "storage_bucket": "my-inappbrowser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056157639585:android:e7668c07bb74ce2f10a1e0",
+        "android_client_info": {
+          "package_name": "com.tmp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOIg1Oh-wXm3IHwU8XOg1tIyo7p9OO0a0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }

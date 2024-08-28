@@ -10,7 +10,8 @@ import {Linking, Alert} from 'react-native';
 
 import {InAppBrowser} from 'react-native-inappbrowser-reborn';
 // import {LogLevel, OneSignal} from 'react-native-onesignal';
-import OneSignal from 'react-native-onesignal';
+// import {OneSignal} from 'react-native-onesignal';
+import {OneSignal} from 'react-native-onesignal';
 
 function App(): React.JSX.Element {
   const sleep = async (timeout: any) => {
@@ -61,44 +62,24 @@ function App(): React.JSX.Element {
     }
   };
 
-  // // Remove this method to stop OneSignal Debugging
-  // OneSignal.Debug.setLogLevel(LogLevel.Verbose);
-
-  // // OneSignal Initialization
-  // OneSignal.initialize('23d045d4-d28f-492c-b616-d73148582ad7');
-
-  // // requestPermission will show the native iOS or Android notification permission prompt.
-  // // We recommend removing the following code and instead using an In-App Message to prompt for notification permission
-  // OneSignal.Notifications.requestPermission(true);
-
-  // // Method for listening for notification clicks
-  // OneSignal.Notifications.addEventListener('click', event => {
-  //   console.log('OneSignal: notification clicked:', event);
-  // });
-
   useEffect(() => {
     // This runs only once, after the component mounts
     openLink();
+    // Remove this method to stop OneSignal Debugging
+    // OneSignal.Debug.setLogLevel(LogLevel.Verbose);
 
-    // Initialize OneSignal with your App ID
-    OneSignal.setAppId('23d045d4-d28f-492c-b616-d73148582ad7');
+    // OneSignal Initialization
 
-    // Prompt for push permissions (iOS)
-    OneSignal.promptForPushNotificationsWithUserResponse();
+    OneSignal.initialize('8c17c838-c4d6-4856-8879-5439e5f10cb3');
 
-    // Handle notification opened
-    OneSignal.setNotificationOpenedHandler(notification => {
-      console.log('Notification opened:', notification);
+    // requestPermission will show the native iOS or Android notification permission prompt.
+    // We recommend removing the following code and instead using an In-App Message to prompt for notification permission
+    OneSignal.Notifications.requestPermission(true);
+
+    // Method for listening for notification clicks
+    OneSignal.Notifications.addEventListener('click', event => {
+      console.log('OneSignal: notification clicked:', event);
     });
-
-    // Handle notification received while the app is running
-    OneSignal.setNotificationWillShowInForegroundHandler(
-      notificationReceivedEvent => {
-        let notification = notificationReceivedEvent.getNotification();
-        console.log('Notification received in foreground:', notification);
-        notificationReceivedEvent.complete(notification);
-      },
-    );
   }, []); // The empty array makes sure this effect runs only once (on mount)
 
   return <></>;
